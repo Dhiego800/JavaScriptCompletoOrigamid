@@ -31,3 +31,42 @@ corFavorita();
 addEventListener('click', function() {
   console.log('Click');
 })
+
+function imc2(peso, altura) {
+  const imc = peso / (altura ** 2);
+  console.log(imc);
+}
+
+imc2(20, 1.8);
+
+function terceiraIdade(idade) {
+  if(typeof idade != 'number') {
+    return 'Informe a sua idade';
+  } else if (idade >= 60) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(terceiraIdade(90));
+
+var totalPaises = 193;
+function faltaVisitar(paisesVisitados) {
+  return `Falta visitar ${totalPaises - paisesVisitados} paises`;
+  
+}
+
+var profissao = 'Developer Front - End';
+function dados() {
+  var nome = 'Diego';
+  var idade = 28;
+  function outrosDados() {
+    var endereco = 'Rio de Janeiro';
+    var idade = 29;
+    return `${nome}, ${idade}, ${endereco}, ${profissao}`;
+  }
+  return outrosDados();
+}
+dados();
+outrosDados();
+
