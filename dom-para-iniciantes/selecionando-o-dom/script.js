@@ -1,89 +1,57 @@
-// document.getElementById Seleciona elemento por ID, caso elemento não existir retorna null
-const animais = document.getElementById('animais');
-console.log(animais);
+/*
+Exercícios
+  Retorne no console todas as imagens do site;
+  Retorne no console apenas as imagens com a palavra imagem;
+  Selecione todos os links internos (onde o href começa com #);
+  Selecione o primeiro h2 dentro de .animais-descricao;
+  Selecione o último p do site;
+*/
 
-/* getElementsByClassName retorna todos elementos que contém a classe desejada.
-pode ser passada mais de uma classe, porém só será selecionado os elementos que
-tiverem as 2 ou mais classes desejadas.*/
+//Retornando todas imagens do site.
+let todasImgs = document.querySelectorAll('img');
+console.log(todasImgs);
 
-const gridSection = document.getElementsByClassName('grid-section');
-console.log(gridSection);
-console.log(gridSection[2]); // Retorna a grid-section na posição 2.
+//Retornando todas imagens com a palavra imagem.
+let imgComPalavraImagem = document.querySelectorAll('[src^="img/imagem"]');
+console.log(imgComPalavraImagem);
 
-/* getElementsByTagName Seleciona todas as tags desejadas, presente no site. no Ex: uma UL, mas poderia
-ser a, p, div, img etc, retorna algo parecido com array */
+//Retornando todos os link's internos do site.
 
-const ul = document.getElementsByTagName('ul');
+let todosLinks = document.querySelectorAll('[href^="#"]');
+console.log(todosLinks);
 
-const primeiraUl = document.querySelector('ul');
-const primeiraLi = document.querySelector('li');
+// Retornando primeiro h2
+let primeiroH2 = document.querySelector('.animais-descricao h2');
+console.log(primeiroH2);
 
-const linkInterno = document.querySelector('[href^="#"]'); // puxa todos elementos que começa com #
+let ultimoP = document.querySelector('footer p:last-child');
+console.log(ultimoP);
+
+//Correção 
+//Selecionando todas imagens do site
+const img = document.querySelectorAll('img');
+console.log(img);
+
+//Selecionando a img que contém a palavra imagem
+const imagensAnimais = document.querySelectorAll('img[src^="img/imagem');
+console.log(imagensAnimais);
+
+//Selecionando apenas link's internos da page
+const linkInterno = document.querySelectorAll('[href^="#');
 console.log(linkInterno);
 
-const animaisImg = document.querySelectorAll('.animais img');
-console.log(animaisImg[1]); // Retorna uma nodeList com todas imagens que estã dentro da classe animais,
+//Selecionando o primeiro h2 do site.
+//Alternativa 1 procura em todo documento
+const h2Animais = document.querySelector('.animais-descricao h2');
+console.log(h2Animais);
 
-/* 
-Diferença entre HTMLCollection vs NodeList 
+//alternativa 2 procura direto dentro da classe selecionada
+const animaisA = document.querySelector('.animais-descricao');
+const h2Rapoza = animaisA.querySelector('h2'); 
+console.log(h2Rapoza);
 
-Primeira diferença está entre metodos e propriedades, segunda aovivo e não aovivo.
+// selecionando o ultimo P do site
 
-HTMLCollection - Se atualiza.
-Nodelist - se não se atualiza.
-
-HTMLCollection <<<<<<<<<<<<<<<
- Propriedades: HTMLCollection.length 
-
- Métodos: HTMLCollection.item() > Retorna um nó especificado por index da lista. o primeiro index da lista é 0. Retorna null se index não existir na lista.
- 
- HTMLCollection.namedItem() > Retorna o nó especificado pelo ID ou, caso não tenha ID, o item cuja propriedade name seja igual à pesquisa. Pesquisa por name só é feita em último caso, somente em HTML, e somente se os elementos referenciados suportarem o atributo name. Retorna null se nenhum nó corresponder ao nome pesquisado.
- 
- NodeList <<<<<<<<<<<<<<<
-
-NodeList.length
-  A quantidade de nodos na NodeList.
-
-  Métodos: NodeList.item()
-Retorna um item da lista pelo índice, ou null se o índice for inválido; pode ser usado como uma alternativa a nodeList[idx] (que retorna  undefined quando idx é inválido).
-
-NodeList.entries()
-Retorna um iterador que permite passar por todos os pares chave/valor contidos no objeto.
-
-NodeList.forEach()
-Executa uma função recebida uma vez para cada elemento no NodeList.
-
-NodeList.keys()
-Retorna um iterador que permite passar por todas as chaves dos pares chave/valor contidos no objeto.
-
-NodeList.values()
-Retorna um iterador que permite passar por todos os valores dos pares chave/valor contidos no objeto.
-
-*/
-
-const gridSectionHTML = document.getElementsByClassName('grid-section'); // OBS: dispensa uso de .
-const gridSectionNode = document.querySelectorAll('.grid-section');
-
-primeiraUl.classList.add('grid-section');
-
-// Retorna itens diferentes pois, uma se atualiza e a outra não.
-console.log(gridSectionHTML[0]);
-console.log(gridSectionNode[0]);
-
-/* 
->>>>> Array-Like <<<<<<
-
-  HTMLCollection & NodeList Parecem uma array, mas não são.
-
-*/
-
-/*forEach() recebe uma função como argumento. 
-e essa função recebe 2 argumentos 1º ITEM 2º INDEX - Posição. */
-
-gridSectionNode.forEach(function(item, index) {
-  console.log(index); // Retorna posição do elemento (INDEX)
-  console.log(item); // Retorna o item em si, no exemplo as section's.
-});
-
-// Array.from() transforma uma HTMLCollection ou NodeList em um ARRAY.
-const arrayGrid = Array.from(gridSectionHTML);
+const paragrafos = document.querySelectorAll('p');
+console.log(paragrafos[paragrafos.length-1]); //alternativa 1 usando operação -1
+console.log(paragrafos[--paragrafos.length]); //alternativa 2 usando decremento --
