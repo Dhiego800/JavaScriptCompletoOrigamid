@@ -1,29 +1,26 @@
-/* 
-menu.className; //String retorna nome da classe. é uma arrayLike portanto podemos pegar exatamente a posição que queremos usando [].
-menu.classList; // Lista de classes
-menu.classList.add('ativo'); // Adiciona class ativo
-menu.classList.add('ativo', 'mobile'); // Adiciona duas classes
-menu.classList.remove('ativo'); // Remove uma classe.
-menu.classList.toggle('ativo') // Adiciona ou remove a classe.
-menu.classList.contains('ativo'); // verifica se contém uma classe, true ou false.
-menu.classList. replace('ativo', 'inativo');  // Substitui classe. no Ex: ativo por inativo.
-*/
+// 1-Adicione a classe ativo a todos os itens do menu.
+const itensMenu = document.querySelectorAll('.menu a');
+itensMenu.forEach((item) => {
+  item.classList.add('ativo');
+})
 
-const menu = document.querySelector('.menu');
+// 2- Remove a classe ativo de todos os itens do menu e mantenha
+itensMenu.forEach((item) => {
+  item.classList.remove('ativo');
+})
 
-menu.classList.add('ativo', 'ativao', 'vivao', 'zika', 'azul', 'nois', 'pesadao', 'vidaloka', 'ehIsso');
+itensMenu[0].classList.add('ativo');
 
-menu.classList.remove('vivao', 'zika');
-menu.classList.toggle('vivao', 'zika');
+// 3- Verifique se as imagens possue o atributo alt.
+const imgs = document.querySelectorAll('img');
 
-if(menu.classList.contains('vivao')) {
-  // console.log('tem a classe vivao');
-}
+imgs.forEach((img) => {
+  console.log(img, img.hasAttribute('alt'));
+})
 
-menu.className = 'ClasseNova'; // Podemos reescrever novas classes. ou
-menu.classList += 'ClasseNovaaa'; // podemos usar uma sintaxe mais simples += (Seria o mesmo que menu.classList = menu.classList + 'string'; )
+// 4- Modifique o href do link externo no menu.
 
-// console.log(menu.className);
+const linkExterno = document.querySelector('a[href^="http"');
+linkExterno.setAttribute('href', 'https://www.google.com.br');
 
-const animais = document.querySelector('.animais');
-console.log(animais.attributes);
+console.log(linkExterno);
