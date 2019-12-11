@@ -1,5 +1,4 @@
 const img = document.querySelector('img');
-
 /*addEventListenner adiciona escutator de evento, 1º parametro tipo de evento click, load etc, 
 2º parametro function callback 3º parametro opicional*/
 
