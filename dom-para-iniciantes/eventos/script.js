@@ -1,47 +1,50 @@
-const img = document.querySelector('img');
-/*addEventListenner adiciona escutator de evento, 1º parametro tipo de evento click, load etc, 
-2º parametro function callback 3º parametro opicional*/
+/*
+1- Quando usuario clicar nos links internos do site, adicione a classe ativo ao item clicado e remova
+dos demais itens caso eles possuam a mesma. Previna o comportamento padão desses links.
 
-function callback(event) {
-  const currentTarget = event.currentTarget; // This
-  const target = event.target; // Onde o click ocorreu
-  const type = event.type; // tipo de evento
-  const path = event.path;
-  console.log(currentTarget, target, type, path);
-}
-img.addEventListener('click', callback);
-const linkExterno = document.querySelector('a[href^="http"]');
+2- Selecione todos os elementos do site começando a partir do body, ao click mostre 
+exatamente quais dos elementos estão sendo clicados.
 
-function handleLinkExterno(event) {
+3- Utilizando o código anterior, ao invés de mostrar no console, remova o elemento que está 
+sendo clicado, o método remove() remove um elemento.
+
+4- Se usuário clicar na tecla (t), aumente todo o texto do site.
+*/
+
+
+//1
+const linksInterno = document.querySelectorAll('a[href^="#"');
+function handleLink(event) {
   event.preventDefault();
+  linksInterno.forEach((item) => {
+    link.classList.remove('ativo');
+  });
 
-  console.log(this);
-  console.log(event.currentTarget);
+  event.currentTarget.classList.add('ativo');
+  //this.currentTarget.classList.add('ativo'); opicional
 }
 
-linkExterno.addEventListener('click', handleLinkExterno);
+linksInterno.forEach((link) => {
+  link.addEventListener('click', handleLink);
+});
 
-const h1 = document.querySelector('h1');
-
-function handleEvent(event) {
-  console.log(event.type, event);
+//2
+function handleElemento(event) {
+  console.log(event.currentTarget); // exercicio 2
+  // event.currentTarget.remove(); //Exercicio 3
 }
 
-h1.addEventListener('click', handleEvent); // adiciona evento de click
-h1.addEventListener('mouseenter', handleEvent); // mouseenter ativa função cada vez que o mause passa encima do elemento selecionado.
-h1.addEventListener('mousemove', handleEvent); // mousemove ativa função a cada micromovimento do mause encima do elemento
+//3
+const todosElementos = document.querySelectorAll('body *');
+todosElementos.forEach((elemento) => {
+  elemento.addEventListener("click", handleElemento);
+})
 
-
-window.addEventListener('scroll', handleEvent); // dispara função a cada scroll
-window.addEventListener('resize', handleEvent); // ativa função cada vez que o tamanho da janela do navegador é redimencionado.
-window.addEventListener('keydown', handleEvent); // ativa função cada vez que uma tecla é acionada.
-
-
-function handleKeyboard(event) {
-  if(event.key === 'f') {
-    document.body.classList.toggle('fullscreen');
+//4
+function handleClickT(event) {
+  if(event.key === 't') {
+    document.documentElement.classList.toggle('textoMaior');
   }
-  console.log(event.key);
 }
 
-window.addEventListener('keydown', handleKeyboard)
+window.addEventListener('keydown', handleClickT);
