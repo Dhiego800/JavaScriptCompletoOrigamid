@@ -35,3 +35,27 @@ lista.previousSibling; // node acima
 
 lista.firstChild; // primeiro node child
 lista.childNodes; // todos os node child
+
+const animais = document.querySelector('.animais');
+const contato = document.querySelector('.contato');
+const titulo = contato.querySelector('.titulo');
+const mapa = document.querySelector('.mapa');
+
+//animais.appendChild(titulo); // coloque como útimo filho. (deve ser passado entre ()).
+//contato.insertBefore(animais, mapa) // Insere um Before, Argumentos (Elemento a ser movido, Filho do elemento selecionado)
+//contato.removeChild(titulo) // Remove Filho
+//contato.replaceChild(lista, titulo) // Substitui elemento.
+
+const novoH1 = document.createElement('h1'); // Criando elemento
+novoH1.innerText = 'New title'; // Inserindo texto no elemento
+novoH1.classList.add('new-title'); // adicionando uma classe ao elemento
+
+mapa.appendChild(novoH1); //Colocando como filho o elemento recém criado.
+
+
+
+const h1 = document.querySelector('h1');
+const faq = document.querySelector('.faq');
+const cloneH1 = h1.cloneNode(true);
+
+faq.appendChild(cloneH1);
