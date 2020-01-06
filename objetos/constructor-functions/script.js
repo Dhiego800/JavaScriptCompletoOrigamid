@@ -1,33 +1,51 @@
-/*
-Funções contrutoras são responsáveis por contruir novos objetos, sempre que chamamos a mesma.
-Criando uma função construtora (Padrão para função construtora, sempre nome da função inicia com LETRA MAIUSCULA)
-This se referencia a ele mesmo no escopo atual. no exemplo a baixo this seria o mesmo que CARRO
+// Transforme o objeto abaixo em uma contructor function
 
-Palavra chave NEW Possui 5 etapas:
-
-1ª Cria novo objeto vazio, 
-2º Define um protótipo,
-3º Aponta a variável this para o objeto (No exemplo honda, fiat),
-4º Executa a função, substituindo this pelo objeto (tudo feito por debaixo dos panos),
-5º No final retorna o novo objeto
-
-*/
-function Carro(marcaAtribuida, precoAtribuido) {
-    this.marca = marcaAtribuida;
-    this.preco = precoAtribuido;
+const pessoa = {
+    nome: 'Nome pessoa',
+    idade: 0,
+    andar() {
+        console.log(this.nome + ' andou');
+    }
 }
 
-/* Entendendo conceito
-    const honda = new Carro(); //Clone1 Carro honda
-    honda.marca = 'honda' // atribuindo nova marca ao objeto clonado da constructor function
+function Pessoa(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+    
+    this.andar = function() {
+        console.log(this.nome + ' Andou');
+    }
+}
 
-    const fiat = new Carro(); //Clone2 Carro Fiat
-    fiat.marca = 'fiat';
+// Crie 3 pessoas, João - 20 anos, Maria - 25 anos, e Bruno 15 anos
+
+const joao = new Pessoa('João', 20);
+const maria = new Pessoa('Maria', 25);
+const bruna = new Pessoa('Bruna', 15);
+
+/* Crie uma Constructor Function (Dom) para manipulação de lista de elementos do dom.
+Deve conter os seguintes propriedades e métodos:
+
+1- elements, retorna NodeList com os elementos selecionados.
+2- addClass(classe), adiciona a classe a todos os elementos.
+3- removeClass(classe), remove a classe a todos elementos.
 
 */
 
+function Dom(seletor){
+    const elementList = document.querySelectorAll(seletor);
+    this.elements = elementList;
+    this.addClass = function(classe) {
+        elementList.forEach((element) => {
+            element.classList.add(classe);
+        })
+    }
+    this.removeClass = function(classe) {
+        elementList.forEach((element) => {
+            element.classList.remove(classe);
+        })
+    }
+}
 
- // Criando novo objeto e atribuindo valores de forma mais simples
-
- const honda = new Carro('Honda', 3000);
-const fiat = new Carro('Fiat', 6000);
+const listaItens = new Dom('li');
+listaItens.addClass('ClassEmTodosLi'); // Testando
