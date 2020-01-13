@@ -1,61 +1,41 @@
-function Pessoa(nome, idade) {
-    this.nome = nome;
-    this.idade = idade;
-    this.abracar = function() {
-        return 'Abraçou'
-    } // metodo "abracar" se for passado diretamente na função construtora, será instanciado sempre que criamos um novo objeto.
-    this.andar = function() {
-        return 'andou pelo objeto'
-    } // Se chamamoro metodo andar(), que também existe no prototype criado, será executado o metodo que está no objeto
-    //pois a ordem de leitura é primeiro a do objeto e dps do prototype.
-}
-
-/*Metodos prototype é unico, ou seja é criado uma vez só.
-metodo criado no protype, 
+/*
+1- Crie uma função construtora de pessoas, deve conter nome, sobrenome, idade
+2-Crie um método no protótipo que retorne o nome completo da pessoa
+3- Liste os metódos acessados por dados criados com NodeList, HTMLCollection, document
+4- Liste os construtores dos dados abaixo;
+5- Qual o construtor do dado abaixo:
 */
-Pessoa.prototype.andar = function() {
-    return 'Pessoa andou'
+
+//1-
+
+function Pessoa(nome, sobrenome, idade) {
+    this.nome = nome;
+    this.sobrenome = sobrenome;
+    this.idade = idade;
 }
 
-Pessoa.prototype.nadar = function() {
-    return 'Pessoa nadou'
+//2
+Pessoa.prototype.nomeCompleto = function () {
+    return `${this.nome} ${this.sobrenome}`;
 }
+const diego = new Pessoa('Diego', 'Morais', 23);
 
+//3
+console.log(Object.getOwnPropertyNames(NodeList.prototype));
+console.log(Object.getOwnPropertyNames(HTMLAllCollection.prototype));
+console.log(Object.getOwnPropertyNames(Document.prototype));
 
-const dhiego = new Pessoa('Dhiiego', 23);
+//4
+const li = document.querySelector('li');
 
-// console.log(Pessoa.prototype); // Retorna objeto
-// console.log(dhiego.prototype); // Retorna undefined
+li; // HTMLLIElement
+li.click; // function
+li.innerText; // String
+li.value; // number
+li.hidden // Boolean
+li.offsetLeft; // number
+li.click(); // undefined 
 
-/* O novo objeto acessa os métodos e propriedades do protótipo
-através da propriedade __proto__. É papel da engine fazer essa busca,
-não devemos falaar com __proto__diretamente. */
+//5
 
-const pais = 'Brasil';
-const cidade = new String('Rio');
-
-const listaAnimais = ['Cachorro', 'Gato', 'Cavalo'];
-
-const lista = document.querySelectorAll('li');
-
-const listaArray = Array.prototype.slice.call(lista); // transforma nodelist em array
-const listaArray2 = Array.from(lista); // cria array
-
-const objGetOwnProperty = Object.getOwnPropertyNames(Array); // getOwnPropertyNames Pegue as proprias propriedades
-console.log(objGetOwnProperty);
-
-const Carro = {
-    marca: 'Ford',
-    preco: 20000,
-    acelerar() {
-        return true;
-    }
-}
-Carro // Object
-Carro.marca // String
-Carro.acelerar // function
-Carro.acelerar() //Boolean
-Carro.marca.charAt // Function
-Carro.marca.charAt(0) //String
-
-console.log(Carro.preco.constructor.name); // constructor.name monsta o nome do valor que esta sendo retornado
+li.hidden.constructor.name; // String;
