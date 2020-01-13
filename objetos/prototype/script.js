@@ -24,9 +24,38 @@ Pessoa.prototype.nadar = function() {
 
 const dhiego = new Pessoa('Dhiiego', 23);
 
-console.log(Pessoa.prototype); // Retorna objeto
-console.log(dhiego.prototype); // Retorna undefined
+// console.log(Pessoa.prototype); // Retorna objeto
+// console.log(dhiego.prototype); // Retorna undefined
 
 /* O novo objeto acessa os métodos e propriedades do protótipo
 através da propriedade __proto__. É papel da engine fazer essa busca,
 não devemos falaar com __proto__diretamente. */
+
+const pais = 'Brasil';
+const cidade = new String('Rio');
+
+const listaAnimais = ['Cachorro', 'Gato', 'Cavalo'];
+
+const lista = document.querySelectorAll('li');
+
+const listaArray = Array.prototype.slice.call(lista); // transforma nodelist em array
+const listaArray2 = Array.from(lista); // cria array
+
+const objGetOwnProperty = Object.getOwnPropertyNames(Array); // getOwnPropertyNames Pegue as proprias propriedades
+console.log(objGetOwnProperty);
+
+const Carro = {
+    marca: 'Ford',
+    preco: 20000,
+    acelerar() {
+        return true;
+    }
+}
+Carro // Object
+Carro.marca // String
+Carro.acelerar // function
+Carro.acelerar() //Boolean
+Carro.marca.charAt // Function
+Carro.marca.charAt(0) //String
+
+console.log(Carro.preco.constructor.name); // constructor.name monsta o nome do valor que esta sendo retornado
