@@ -85,3 +85,42 @@ linguagem.substring(-3);// Retorna a string completa, pois não aceita valores n
  listaPrecos.forEach((preco) => {
      console.log(preco.padStart(10, '. '));
 })
+
+//Aula 2
+
+const frasee = 'Ta';
+
+frasee.repeat(5); // repete a string pelo valor que for passado, no exemplo 5x.
+
+/*
+    replace(regexp|substring, newstring|function) basicamente troca uma parte de uma string por outra,
+    se usarmos um valor direto ele irá trocar apenas o primeiro valor que encontrar
+*/
+let listaItens = 'Camisas Bonés Calças Berbudas Vestidos Saias';
+listaItens = listaItens.replace(/[ ]+/g, ', ');
+
+let preco = 'R$ 1200,43';
+preco.replace(',', '.');
+
+
+/*split('') passamos um padrão, "quebra", sempre o que está dentro do split é removido e de acordo com padrão retorna um array */
+const arrayLista = listaItens.split(', ');
+
+const htmlText = '<div>O melhor item</div><div>A melhor lista</div>';
+const htmlArray = htmlText.split('div');
+
+/*join() pega cada item de um array junta com o que for passado(''), e retorna uma string. */
+const novoHtml = htmlArray.join('section');
+
+const sexo1 = 'Feminino'; 
+const sexo2 = 'feminino';
+const sexo3 = 'FEMININO';
+
+
+/*toLocaleLowerCase() Retorna string com letra minuscula, 
+toUpperCase() retorna string com letra maiuscula */
+
+const valor = '  R$ 23.00  ';
+valor.trim(); //Remove todos os espaços.
+valor.trimStart(); // Remove espaço da esquerda para direita.
+valor.trimEnd(); // Remove espaço da direita para esquerda.
