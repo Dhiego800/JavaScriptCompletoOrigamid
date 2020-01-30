@@ -1,60 +1,35 @@
-// NUMBER
+// Exercicios 
+// Retorne valor aleatorio entre 1050 e 2000
 
-console.log(Number.isNaN(NaN)); // verifica se é NaN se for retorna true
-//console.log(4 + 5(NaN)) // retorna false.
+const returnValorAleatorio = Math.floor(Math.random() * (2000 - 1050) + 1050);
+console.log(returnValorAleatorio) 
 
-console.log(Number.isInteger(20)); // Verifica se é numero inteiro. retorna true, caso numero sejá "quebrado" retorna false ex:20.54547.
-console.log(Number.isInteger(20.551)) //retorna false.
+// Retorne o maior número da lista abaixo
 
-console.log(parseFloat('323234.22')) //Transforma String em numero. Retorna um numero, se for passado "," ele ignora tudo que tiver após a virgula e retorna numero.
-console.log(parseInt(23.5)) // Retorna 23, corta valores decimais.
+const numeros = '4, 5, 660, 8, 9';
+const arrayNumber = numeros.split(', ');
+const numberMax = Math.max(...arrayNumber);
 
-const preco = 2.99;
-preco.toFixed(); //Retorna 3 arredonda o valor se não for passado nada nos ()
+console.log(numberMax);
 
-const carro = 1000.455;
-carro.toFixed(2) // 1000.46 se for passado valor nós() limita o numero de casas decimais
+/* Crie uma função para limpar os preços, e retornar os números
+com centavos arredondados e depois retorne a soma total*/
 
-const preco2 = 1499.49
-preco2.toFixed() //1499 Arredonda valor
+const listaPrecos = ['R$ 59,99', ' R$ 100,222',
+                     'R$ 230  ', 'r$ 200'];
 
-const preco3 = 3.99;
-preco.toString(10); // Transforma numero em string
+function limparPreco(preco) {
+    preco = +preco.toUpperCase().replace('R$', '').trim().replace(',', '.');
+    preco = +preco.toFixed(2);
+    
+    return preco;
+}
 
-/*
-    toLocaleString() Transforma numero em uma moeda.
-    recebe 2 parametros, 1º linguagem, 2º opções
-*/
-let valor = 59.49;
+let soma = 0;
+listaPrecos.forEach((preco) => {
+    soma += limparPreco(preco);
+});
 
-let valorUs = valor.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
-console.log(valorUs)
+console.log(soma.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'}));
 
-let valorBr = valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-console.log(valorBr)
-
-// MATH'S 
-
-Math.PI // Retorna 3.141592653589793;
-
-Math.abs(-5.5); // 5.5 .ABS - Retorna valor absoluto
-Math.ceil(4.8334); // 5 ceil - Arrendonda para um valor inteiro, sempre um valor MAIOR
-Math.ceil(4.3); // 4 ceil - Arredonda para valor superior
-Math.floor(4.8334); //  floor Arredonda sempre para valor menor.
-Math.floor(4.3); // floor Arredonda para valor menor
-Math.round(4.8334); // round Round simples mente arredonda o valor.
-Math.round(4.3);
-
-Math.max(5,3,10,42,2) // Pega lista de argumento que foi passado e retorna o maximo(maior valor)
-Math.min(5,3,10,42,2) // Retorna o menor valor(minimo).
-
-const numeroAleatorio = Math.random() * 200;
-console.log(numeroAleatorio);
-
-Math.random();
-
-Math.floor(Math.random() * 100) // Retorna numero aleatorio de  a 100
-Math.floor(Math.random() * 500) 
-
-Math.floor(Math.random() * (72 - 32 + 1)) + 32; // Retorna valor aleatorio entre os valores 72 e 32
-//Math.floor(Math.random() * (max - min + 1)) + min;
+limparPreco(listaPrecos[1]);
