@@ -57,3 +57,59 @@ console.log(carros1);
 carros1.pop() // Retorna e remove o utimo item da array
 carros1.pop() // Retorna e removeo Primeiro item da array
 carros1.reverse() // Inverte a ordem da array e à retorna.
+
+
+
+
+//splice(index, remover, item1, item2, ...)
+
+const carros2 = ['Ford', 'Fiat', 'VW', 'Honda'];
+carros2.splice(1, 0, 'Kia', 'Munstang'); // Adiciona items na array apartir do index passado
+console.log(carros2);
+carros2.splice(1, 2, 'Kia', 'Munstang'); // segundoo parametro seria qts itens vamos remover da array, E os retorna
+console.log(carros2);
+
+// .copy(alvo, inicio, final)
+
+const arrayCopy = ['Item1','Item2','Item3','Item4','Item5'];
+arrayCopy.copyWithin(0, 0, 0);
+console.log(arrayCopy);
+
+//fill(Valor, inicio, final) preeche array com o valor que for passado, primeiro parametro de qual index ele deve partir,
+// segundo parametro qual index ele deve parar.
+
+arrayFill = ['Item1','Item2','Item3','Item4','Item5'];
+arrayFill.fill('test', 2, 4)
+console.log(arrayFill)
+
+//concat() concatena, ou seja junta as array's e a retorna.
+
+const transporte1 = ['Barco', 'Avião']
+const transporte2 = ['Carro', 'Moto']
+const transporteT = transporte1.concat(transporte2);
+console.log(transporteT);
+
+const maisTransportes = [].concat(transporte1, transporte2, 'Van');
+console.log(maisTransportes);
+
+const linguagens = ['html', 'css', 'js', 'php', 'python', 'js'];
+
+linguagens.includes('css'); //True, verifica se existe valor na array. 
+linguagens.includes('ruby'); // Retorna false, pois não existe na array.
+linguagens.indexOf('python'); // Retorna o index(posisão) do item na array.
+linguagens.indexOf('js'); // Retorna a posição do primeiro valor que ele encontrar dentro da array.
+linguagens.lastIndexOf('js'); // retorna a posição do valor passado na array, de trás para frente.
+
+// join() Junta array e transforma em string.
+
+let htmlString = '<h2>Titulo Principal</h2>';
+htmlString = htmlString.split('h2'); // Relembrando "corta" sempre que aparece h2.
+htmlString = htmlString.join('h1');
+
+// slice(inicio, final) percorre array do inicio até o index que for passado.
+// Caso não for passado nada, slice retorna um clone da array.
+
+const cloneLinguagens = linguagens.slice();
+console.log(
+linguagens.slice(3),
+linguagens.slice(1, 4))
