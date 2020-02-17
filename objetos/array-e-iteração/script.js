@@ -84,5 +84,64 @@ const maiorNumero = numerosR.reduce((anterior, atual)=>{
     // }
     return anterior > atual ? anterior : atual;
 })
+//console.log(maiorNumero);
 
-console.log(maiorNumero);
+const aulasReduce = [
+    {
+        nome:'HTML 1',
+        min: 15
+    },
+    {
+        nome: 'HTML 2',
+        min: 10
+    },
+    {
+        nome: 'CSS 1' ,
+        min: 20
+    },
+    {
+        nome: 'JS 1',
+        min: 25
+    },
+];
+
+const listaAulas = aulas.reduce((acumulador, aula, index) => {
+    acumulador[index] = aula.nome;
+    return acumulador;
+}, {});
+
+// .reduceRight() muda forma de leitura, da direita para esquerda.
+
+const frutas = ['Banana', 'Pêra', 'Uva'];
+
+const frutasRight = frutas.reduceRight((acc, fruta) => acc + ' ' + fruta);
+const frutasLeft = frutas.reduce((acc, fruta) => acc + ' ' + fruta);
+
+//console.log(frutasLeft, frutasRight);
+
+
+//.some() Se pelo menos um return da iteração for truthy, ele retorna true.
+
+const temUva = frutas.some((fruta) => {
+    return fruta === 'Uva';
+})
+
+function maiorQue100(numero) {
+    return numero > 100;
+};
+const numerosSome = [0, 43, 22, 88, 101, 2];;
+const temMaior = numerosSome.some(maiorQue100);
+console.log(temUva, temMaior);
+
+/*every() Se todos os return das iterações forem truthy, o método irá retornar true,
+Se pelo menos um for falsy, ele irá retornar false.
+*/
+
+const frutasEvery = ['Banana', 'Pêra', 'Uva', ''];
+const arraysCheias = frutasEvery.every((fruta) => {
+    return fruta;
+})
+const numerosEvery = [6, 43, 22, 88, 101, 29];
+const maiorQue3 = numerosEvery.every(x => x > 3);
+
+console.log(arraysCheias, maiorQue3);
