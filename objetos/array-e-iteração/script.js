@@ -131,7 +131,7 @@ function maiorQue100(numero) {
 };
 const numerosSome = [0, 43, 22, 88, 101, 2];;
 const temMaior = numerosSome.some(maiorQue100);
-console.log(temUva, temMaior);
+//console.log(temUva, temMaior);
 
 /*every() Se todos os return das iterações forem truthy, o método irá retornar true,
 Se pelo menos um for falsy, ele irá retornar false.
@@ -144,4 +144,56 @@ const arraysCheias = frutasEvery.every((fruta) => {
 const numerosEvery = [6, 43, 22, 88, 101, 29];
 const maiorQue3 = numerosEvery.every(x => x > 3);
 
-console.log(arraysCheias, maiorQue3);
+//console.log(arraysCheias, maiorQue3);
+
+/*.find() e findIndex()
+    Retorna o valor da primeira interação que retornar valor verdadeiro.
+Já o .findIndex(), ao invés de retornar o valor retorna o index deste valor na array.
+*/
+
+const frutasFind = ['Banana', 'Pêra', 'Uva', 'Maça'];
+const buscaUva = frutas.findIndex((fruta) => {
+    return fruta === 'Uva';
+});
+console.log(buscaUva);
+
+const numerosFind = [6, 43, 22, 88, 101, 29];
+const buscaMaior45 = numeros.find(x => x > 45);
+
+console.log(buscaMaior45);
+
+/* .filter() Retorna uma array com a lista de valores que durante sua
+interação retornaram um valor truthy */
+
+const frutasFilter = ['Banana', undefined, null, '', 'Uva', 0, 'Maçã'];
+const arrayLimpa = frutas.filter((fruta) => {
+    return fruta;
+});
+console.log(arrayLimpa);
+
+const numerosFilter = [6, 43, 22, 88, 101, 29];
+const buscarNumberMaior45 = numerosFilter.filter(x => x > 45);
+console.log(buscarNumberMaior45);
+
+const aulasFilter = [
+    {
+        nome:'HTML 1',
+        min: 15
+    },
+    {
+        nome: 'HTML 2',
+        min: 10
+    },
+    {
+        nome: 'CSS 1' ,
+        min: 20
+    },
+    {
+        nome: 'JS 1',
+        min: 25
+    },
+];
+
+const maiores15 = aulasFilter.filter((aula) => {
+    return aula.min >= 15;
+})
