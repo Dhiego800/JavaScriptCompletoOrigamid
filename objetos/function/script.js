@@ -66,3 +66,40 @@ const arrayLike = {
     2: 'item 3',
     length: 3,
 };
+
+/* apply(this, [arg1, arg2, ...]) funciona como o call, a única
+diferença é que os argumentos da função são passados através de uma array*/
+
+const numeros = [3,4,5,6,1,34,44,32];
+Math.max.apply(null, numeros);
+Math.max.call(null, 3, 4, 5, 6, 7, 20);
+
+/*Diferente de call e apply o bind(this, arg1, arg2, ...) não
+irá executar a função mas sim retornar a mesma com o novo contexto de this */
+
+const filtrarLi = Array.prototype.filter.bind(li, function(item){
+    return item.classList.contains('ativo');
+});
+console.log(filtrarLi());
+
+const $ = document.querySelectorAll.bind(document);
+
+const carroBind = {
+    marca: 'Ford',
+    ano: '2020',
+    acelerar: function(aceleracao, tempo) {
+        return `${this.marca} acelerou ${aceleracao} em ${tempo} s`
+    }
+};
+
+const honda = {
+    marca: 'Honda',
+}
+
+const acelerarHonda = carroBind.acelerar.bind(honda);
+console.log(acelerarHonda(300, 22));
+
+function imc (altura, peso) {
+    return peso / (altura * altura);
+};
+const imc180 = imc.bind(null, 1.80);
