@@ -10,13 +10,35 @@
 <body>
   <form name="contato" id="contato">
     <label for="nome">Nome</label>
-    <input type="text" name="nome" id="nome">
+    <input type="text" name="nome" id="nome" required>
+    <span class="erro"></span>
     <label for="email">Email</label>
-    <input type="text" name="email" id="email">
+    <input type="email" name="email" id="email" required>
+    <span class="erro"></span>
     <label for="mensagem"></label>
-    <textarea name="mensagem" id="mensagem"></textarea>
+    <textarea name="mensagem" id="mensagem"></textarea>    
   </form>
   <span class="texto"></span>
   <script src="script.js"></script>
 </body>
 </html>
+
+<!--
+{
+<select name="azul">
+  <option value="blue">Azul</option>
+  <option value="red">Vermelho</option>
+  <option value="silver">Cinza</option>
+</select>
+
+<section>
+  <input type="color">
+  <input type="date">
+  <input type="number">
+  <input type="range">
+  <input type="password">
+  <input type="checkbox">
+  <input type="radio">
+</section> 
+}
+-->
