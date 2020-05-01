@@ -81,4 +81,53 @@ sobre.then(response => response.text())
   div.innerHTML = htmlBody;
   const titulo = div.querySelector('h1');
   document.querySelector('h1').innerText = titulo.innerText;
+});
+
+/*
+  .blob()
+  Um blob é um tipo de objeto para representação de dados
+  de um arquivo. O blob pode ser utilizado para transformarmos
+  requisições de imagens por exmeplo. O blob gera um URL único.
+*/
+
+
+const Imagemcar = fetch('./img.jpg');
+Imagemcar.then(response => response.blob())
+.then(img => {
+  const blobUrl = URL.createObjectURL(img);
+  const imgDom = document.querySelector('img')
+  imgDom.src = blobUrl;
+});
+
+/*
+  .clone()
+  Ao utilizarmos os métodos acima, text, json, blob, a resposta é
+  modificada. Por isso existe o método clone, caso você necessite
+  transformar uma resposta em diferentes valores.
+*/
+
+const cep2 = fetch('https://viacep.com.br/ws/05868210/json/');
+cep2.then(r => {
+  const cep3 = r.clone();
+
+  r.text().then((text) => {
+    console.log(text);
+  });
+  cep3.json().then((json) => {
+    console.log(json);
+  })
+}).then(body => {
+  console.log(body);
+});
+
+/*
+  .headers()
+  É uma propriedade que possui os cabeçalhos da requisição
+  É um tipo de dado iterável então podemos utilizar o forEach
+  para vermos cada um deles.
+*/
+
+const headers = fetch('https://viacep.com.br/ws/05868210/json/');
+headers.then(response => {
+  
 })
