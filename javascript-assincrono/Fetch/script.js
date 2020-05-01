@@ -77,7 +77,7 @@ const sobre = fetch('./sobre.html');
 
 sobre.then(response => response.text())
 .then(htmlBody => {
-  console.log(div)
+  //console.log(div)
   div.innerHTML = htmlBody;
   const titulo = div.querySelector('h1');
   document.querySelector('h1').innerText = titulo.innerText;
@@ -111,13 +111,13 @@ cep2.then(r => {
   const cep3 = r.clone();
 
   r.text().then((text) => {
-    console.log(text);
+    //console.log(text);
   });
   cep3.json().then((json) => {
-    console.log(json);
+    //console.log(json);
   })
 }).then(body => {
-  console.log(body);
+ // console.log(body);
 });
 
 /*
@@ -125,9 +125,30 @@ cep2.then(r => {
   É uma propriedade que possui os cabeçalhos da requisição
   É um tipo de dado iterável então podemos utilizar o forEach
   para vermos cada um deles.
+
+  .status().ok
+  Retorna o status da requisição. Se foi 404, 200, 202 e mais.
+  .ok retorna um valor booleano sendo true para uma requisição 
+  de sucesso e false para sem sucesso.
 */
 
 const headers = fetch('https://viacep.com.br/ws/05868210/json/');
 headers.then(response => {
-  
+  //response.headers.forEach(console.log)
+  if(response.status === 404){
+    //console.log('Pagina não existe')
+  }
 })
+
+/*
+  .url e .type
+  .url retorna o url da requisição .type retorna o tipo da resposta.
+*/
+headers.then(r =>{
+  console.log(r.type, r.url);
+});
+//types
+//basic: Feito na mesma origem
+//cors: feito em url body pode estar disponivel
+//error: erro de conexâo
+//opaque: no-cors, não permite acesso de outros sites
