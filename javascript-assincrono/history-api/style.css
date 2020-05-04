@@ -1,0 +1,27 @@
+body {
+  background-color: rgb(39, 39, 39);
+  color: #fff;
+}
+h1, div {
+  color: white;
+}
+
+label {
+  display: block;
+}
+input {
+  display: block;
+}
+
+.nav-ul {
+  display: flex;
+}
+
+.nav-ul li {
+  width: 80px;
+  margin: 10px 0;
+}
+
+.content {
+ width: 50%; 
+}
