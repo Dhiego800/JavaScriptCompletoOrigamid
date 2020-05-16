@@ -1,50 +1,53 @@
-/*
-  #Factory Function
-    São funções que retornam um objeto sem a necessidade de 
-    utilizarmos a palavra chave new. Possuem basicamente a mesma
-    função que constructor function / classes.
+function $$ (selectedElements) {
+  const elements = document.querySelectorAll(selectedElements);
 
-  #Métodos / Variaveis privadas
-    Uma das vantagens é a possibilidade de criarmos métodos / 
-    variaveis privadas.
+  function hide() {
+    elements.forEach(element =>{
+      element.style.display = 'none';
+    });
+    return this
+  };
 
-  #Ice Factory
-    Podemos impedir que os métodos e propriedades sejam
-    modificados com Object.freeze(). Ideia inicial de 
-    Douglas Crockfrod.
+  function show() {
+    elements.forEach(element =>{
+      element.style.display = 'inital';
+    });
+    return this
+  };
 
-  #Constructor Function / Factory Function
-    Uma das vantagens do Factory Function é a possibilidade de
-    iniciarmos a mesma, sem a utilização da palavra chave new.
-    Também é possível fazer isso com uma Constructor Function.
-*/
-
-function createButton (text) {
-  const numeroSecreto = 877745698723001;
-
-  function element () {
-    const buttonElement = document.createElement('button');
-    buttonElement.innerText = text;
-    return buttonElement;
+  function on(onEvent, callback) {
+    elements.forEach(element => {
+      element.addEventListener(onEvent, callback);
+    });
+    return this;
   }
-  return Object.freeze({
-    text,
-    element
-  });
+
+  function addClass(className) {
+    elements.forEach(element =>{
+      element.classList.add(className);
+    });
+    return this;
+  }
+  function removeClass(className) {
+    elements.forEach(element =>{
+      element.classList.remove(className);
+    });
+    return this;
+  }
+  return {
+    elements,
+    hide,
+    show,
+    on,
+    addClass,
+    removeClass,
+  }
 }
+const btns = $$('button');
+//console.log(btns)
 
-const btn = createButton('Seguir')
-//console.log(btn.element());
-
-function Pessoa (nome) {
-  if(!(this instanceof Pessoa)) // ou (!new.target)
-    return new Pessoa(nome);
-  this.nome = nome;
+function handleClick(event) {
+  console.log('Clicando. . .', event.target)
+  btns.addClass('active');
 }
-
-Pessoa.prototype.andar = function() {
-  return `${this.nome} andou`
-}
-
-const dev = Pessoa('Dhiiego')
-console.log(dev);
+btns.on('click', handleClick);
